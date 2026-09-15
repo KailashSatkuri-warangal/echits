@@ -4,6 +4,7 @@ import { Header } from './Header';
 import { BottomNavigation } from './BottomNavigation';
 import { DesktopSidebar } from './DesktopSidebar';
 import { PaymentDrawer } from '../payments/PaymentDrawer';
+import { PWAInstallBanner } from '../ui/PWAInstallBanner';
 
 export const AppLayout: React.FC = () => {
   const [isPaymentDrawerOpen, setIsPaymentDrawerOpen] = useState(false);
@@ -24,6 +25,9 @@ export const AppLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col antialiased">
+      {/* PWA Install Banner */}
+      <PWAInstallBanner />
+
       {/* Top Header */}
       <Header />
 

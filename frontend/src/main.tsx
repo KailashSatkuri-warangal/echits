@@ -8,3 +8,17 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <App />
   </React.StrictMode>,
 );
+
+// Register Service Worker for PWA
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then((reg) => {
+        console.log('✅ eChits PWA Service Worker registered successfully:', reg.scope);
+      })
+      .catch((err) => {
+        console.warn('⚠️ eChits PWA Service Worker registration error:', err);
+      });
+  });
+}
