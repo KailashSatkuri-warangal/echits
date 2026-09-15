@@ -46,37 +46,41 @@ async function seed() {
   const auditRepo = dataSource.getRepository(entities.AuditLog);
   const settingRepo = dataSource.getRepository(entities.BusinessSetting);
 
+  // If in production/Postgres and already seeded, skip to avoid clearing live data
+  const existingAdmin = await userRepo.findOne({ where: { email: 'admin@echits.com' } });
+  if (isPostgres && existingAdmin) {
+    console.log('⚡ eChits Database already contains seed data. Skipping re-seed.');
+    await dataSource.destroy();
+    return;
+  }
+
   // Clear existing records if needed
   if (!isPostgres) {
     await dataSource.query('PRAGMA foreign_keys = OFF;');
-  }
+    const reversalRepo = dataSource.getRepository(entities.PaymentReversal);
+    const advanceRepo = dataSource.getRepository(entities.MemberAdvance);
+    const adjRepo = dataSource.getRepository(entities.Adjustment);
 
-  const reversalRepo = dataSource.getRepository(entities.PaymentReversal);
-  const advanceRepo = dataSource.getRepository(entities.MemberAdvance);
-  const adjRepo = dataSource.getRepository(entities.Adjustment);
-
-  await reversalRepo.clear().catch(() => {});
-  await allocRepo.clear().catch(() => {});
-  await adjRepo.clear().catch(() => {});
-  await advanceRepo.clear().catch(() => {});
-  await paymentRepo.clear().catch(() => {});
-  await liftRepo.clear().catch(() => {});
-  await dueRepo.clear().catch(() => {});
-  await membershipRepo.clear().catch(() => {});
-  await monthRepo.clear().catch(() => {});
-  await chitRepo.clear().catch(() => {});
-  await memberRepo.clear().catch(() => {});
-  await userRepo.clear().catch(() => {});
-  await closingRepo.clear().catch(() => {});
-  await notifRepo.clear().catch(() => {});
-  await auditRepo.clear().catch(() => {});
-  await settingRepo.clear().catch(() => {});
-
-  if (!isPostgres) {
+    await reversalRepo.clear().catch(() => {});
+    await allocRepo.clear().catch(() => {});
+    await adjRepo.clear().catch(() => {});
+    await advanceRepo.clear().catch(() => {});
+    await paymentRepo.clear().catch(() => {});
+    await liftRepo.clear().catch(() => {});
+    await dueRepo.clear().catch(() => {});
+    await membershipRepo.clear().catch(() => {});
+    await monthRepo.clear().catch(() => {});
+    await chitRepo.clear().catch(() => {});
+    await memberRepo.clear().catch(() => {});
+    await userRepo.clear().catch(() => {});
+    await closingRepo.clear().catch(() => {});
+    await notifRepo.clear().catch(() => {});
+    await auditRepo.clear().catch(() => {});
+    await settingRepo.clear().catch(() => {});
     await dataSource.query('PRAGMA foreign_keys = ON;');
   }
 
-  console.log('🧹 Existing data cleared.');
+  console.log('🧹 Preparing fresh seed data...');
 
   // 1. Seed Users
   const salt = await bcrypt.genSalt(10);
@@ -550,5 +554,10 @@ async function seed() {
 
 seed().catch((err) => {
   console.error('❌ Seeding error:', err);
-  process.exit(1);
+  if (process.env.NODE_ENV === 'production') {
+    console.warn('⚠️ Non-fatal seed error in production. Proceeding with application startup...');
+    process.exit(0);
+  } else {
+    process.exit(1);
+  }
 });
