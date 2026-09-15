@@ -54,7 +54,7 @@ export class Payment {
   @Column({ name: 'collected_by', type: 'uuid' })
   collectedBy: string;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn()
   collectedAt: Date;
 
   @Index({ unique: true })

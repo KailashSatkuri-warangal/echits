@@ -24,7 +24,7 @@ export class PaymentReversal {
   @Column({ name: 'reversed_by', type: 'uuid' })
   reversedBy: string;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn()
   reversedAt: Date;
 
   @Column({ type: 'text', nullable: true })

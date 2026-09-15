@@ -61,7 +61,7 @@ export class DailyClosing {
   @Column({ type: 'varchar', length: 30, default: DailyClosingStatus.OPEN })
   status: DailyClosingStatus;
 
-  @Column({ type: 'datetime', nullable: true })
+  @Column({ nullable: true })
   closedAt: Date;
 
   @CreateDateColumn()
