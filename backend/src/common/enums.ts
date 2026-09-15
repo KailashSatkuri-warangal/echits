@@ -1,0 +1,85 @@
+export enum Role {
+  SUPER_ADMIN = 'SUPER_ADMIN',
+  ADMIN = 'ADMIN',
+  COLLECTION_STAFF = 'COLLECTION_STAFF',
+  ACCOUNTANT = 'ACCOUNTANT',
+  VIEWER = 'VIEWER',
+  MEMBER = 'MEMBER',
+}
+
+export enum PaymentMode {
+  CASH = 'CASH',
+  UPI = 'UPI',
+  BANK_TRANSFER = 'BANK_TRANSFER',
+  CHEQUE = 'CHEQUE',
+  OTHER = 'OTHER',
+}
+
+export enum DueStatus {
+  PENDING = 'PENDING',
+  PART_PAID = 'PART_PAID',
+  PAID = 'PAID',
+  OVERDUE = 'OVERDUE',
+  WAIVED = 'WAIVED',
+}
+
+export enum ChitStatus {
+  DRAFT = 'DRAFT',
+  ACTIVE = 'ACTIVE',
+  SUSPENDED = 'SUSPENDED',
+  COMPLETED = 'COMPLETED',
+  CANCELLED = 'CANCELLED',
+}
+
+export enum MembershipStatus {
+  ACTIVE = 'ACTIVE',
+  LIFTED = 'LIFTED',
+  EXITED = 'EXITED',
+  CLOSED = 'CLOSED',
+}
+
+export enum ChitMonthStatus {
+  PENDING = 'PENDING',
+  OPEN = 'OPEN',
+  CLOSED = 'CLOSED',
+}
+
+export enum LiftApprovalStatus {
+  PENDING = 'PENDING',
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED',
+}
+
+export enum AdjustmentType {
+  WAIVER = 'WAIVER',
+  DISCOUNT = 'DISCOUNT',
+  CORRECTION = 'CORRECTION',
+  INTEREST_RELIEF = 'INTEREST_RELIEF',
+}
+
+export enum DailyClosingStatus {
+  OPEN = 'OPEN',
+  CLOSED = 'CLOSED',
+}
+
+export enum NotificationCategory {
+  DUE_TODAY = 'DUE_TODAY',
+  OVERDUE = 'OVERDUE',
+  MULTI_CHIT_PENDING = 'MULTI_CHIT_PENDING',
+  INTEREST_PENDING = 'INTEREST_PENDING',
+  LIFT_PENDING = 'LIFT_PENDING',
+  ENDING_SOON = 'ENDING_SOON',
+}
+
+export enum AuditAction {
+  LOGIN = 'LOGIN',
+  CREATE = 'CREATE',
+  UPDATE = 'UPDATE',
+  DELETE = 'DELETE',
+  PAYMENT_RECORDED = 'PAYMENT_RECORDED',
+  PAYMENT_REVERSED = 'PAYMENT_REVERSED',
+  LIFT_CONFIRMED = 'LIFT_CONFIRMED',
+  ADJUSTMENT_APPROVED = 'ADJUSTMENT_APPROVED',
+  DAILY_CLOSING = 'DAILY_CLOSING',
+  SETTING_CHANGED = 'SETTING_CHANGED',
+}
