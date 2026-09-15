@@ -17,8 +17,10 @@ import { NotificationsModule } from './modules/notifications/notifications.modul
 import { CommunicationsModule } from './modules/communications/communications.module';
 import { AuditModule } from './modules/audit/audit.module';
 import { SettingsModule } from './modules/settings/settings.module';
+import { AppController } from './app.controller';
 
 @Module({
+  controllers: [AppController],
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
