@@ -13,14 +13,18 @@ import * as entities from '../entities';
         const entityList = Object.values(entities);
 
         if (isPostgres) {
+          const dbUrl = configService.get<string>('DATABASE_URL');
+          const isSsl = !!dbUrl || configService.get<string>('DB_SSL') === 'true';
+
           return {
             type: 'postgres',
-            url: configService.get<string>('DATABASE_URL'),
+            url: dbUrl,
             host: configService.get<string>('DB_HOST', 'localhost'),
             port: parseInt(configService.get<string>('DB_PORT', '5432'), 10),
             username: configService.get<string>('DB_USERNAME', 'postgres'),
             password: configService.get<string>('DB_PASSWORD', 'postgres'),
             database: configService.get<string>('DB_DATABASE', 'echits'),
+            ssl: isSsl ? { rejectUnauthorized: false } : false,
             entities: entityList,
             synchronize: true, // Auto-sync schema in development/staging
             logging: process.env.NODE_ENV === 'development',

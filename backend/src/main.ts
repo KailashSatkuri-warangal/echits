@@ -45,9 +45,9 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document);
 
   const port = process.env.PORT || 4000;
-  await app.listen(port);
-  console.log(`🚀 eChits Financial Backend running on: http://localhost:${port}/api`);
-  console.log(`📑 OpenAPI Swagger Documentation available at: http://localhost:${port}/api/docs`);
+  await app.listen(port, '0.0.0.0');
+  console.log(`🚀 eChits Financial Backend running on port ${port} (/api)`);
+  console.log(`📑 OpenAPI Swagger Documentation available at /api/docs`);
 }
 
 bootstrap();
