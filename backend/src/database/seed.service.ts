@@ -59,11 +59,31 @@ export class SeedService implements OnApplicationBootstrap {
     ];
 
     for (const u of defaultUsers) {
-      let existing = await userRepo.findOne({
-        where: [{ email: u.email.toLowerCase() }, { phone: u.phone }],
+      let existingByEmail = await userRepo.findOne({
+        where: { email: u.email.toLowerCase() },
       });
-      if (!existing) {
-        existing = userRepo.create({
+
+      if (existingByEmail) {
+        existingByEmail.name = u.name;
+        existingByEmail.passwordHash = passwordHash;
+        existingByEmail.isActive = true;
+        existingByEmail.role = u.role;
+        existingByEmail.phone = u.phone;
+        await userRepo.save(existingByEmail).catch(async () => {
+          // If phone conflict, resolve by assigning unique phone
+          existingByEmail.phone = `${u.phone}0`;
+          await userRepo.save(existingByEmail);
+        });
+        this.logger.log(`Updated user: ${u.email}`);
+      } else {
+        // Check if another user holds this phone
+        const existingByPhone = await userRepo.findOne({ where: { phone: u.phone } });
+        if (existingByPhone) {
+          existingByPhone.phone = `${existingByPhone.phone}9`;
+          await userRepo.save(existingByPhone);
+        }
+
+        const newUser = userRepo.create({
           name: u.name,
           email: u.email.toLowerCase(),
           phone: u.phone,
@@ -71,13 +91,8 @@ export class SeedService implements OnApplicationBootstrap {
           role: u.role,
           isActive: true,
         });
-        await userRepo.save(existing);
+        await userRepo.save(newUser);
         this.logger.log(`Created user: ${u.email}`);
-      } else {
-        existing.passwordHash = passwordHash;
-        existing.isActive = true;
-        existing.role = u.role;
-        await userRepo.save(existing);
       }
     }
 
