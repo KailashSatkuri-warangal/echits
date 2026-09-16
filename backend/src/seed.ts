@@ -7,6 +7,7 @@ import { CurrencyUtil } from './common/utils/currency.util';
 async function seed() {
   const dbUrl = process.env.DATABASE_URL;
   const dbHost = process.env.DB_HOST;
+  const isPostgres = !!dbUrl || !!dbHost;
 
   let dataSource: DataSource;
   if (dbUrl) {
