@@ -34,7 +34,7 @@ describe('eChits Full Financial Operations E2E Integration Suite', () => {
     it('should authenticate Admin user and issue JWT token', async () => {
       const res = await request(app.getHttpServer())
         .post('/api/auth/login')
-        .send({ email: 'admin@echits.com', password: 'Admin@123' })
+        .send({ email: 'admin@sudhakarchits.com', password: 'SC#7yT3^uW9#pM5$eR2@qZ82' })
         .expect(200);
 
       expect(res.body.success).toBe(true);

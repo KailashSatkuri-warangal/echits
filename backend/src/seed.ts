@@ -94,14 +94,17 @@ async function seed() {
 
   // 1. Seed Users
   const salt = await bcrypt.genSalt(10);
-  const passwordHash = await bcrypt.hash('Admin@123', salt);
+  const hashSuperAdmin = await bcrypt.hash('SC#9kM2$vL8@zP4!wX7&jR59', salt);
+  const hashAdmin = await bcrypt.hash('SC#7yT3^uW9#pM5$eR2@qZ82', salt);
+  const hashCollector = await bcrypt.hash('SC#4zV8@wP2#kL6$jQ9!tN33', salt);
+  const hashAccountant = await bcrypt.hash('SC#8kM2@vX9!wZ4#eT7&yR54', salt);
 
   const superAdmin = await userRepo.save(
     userRepo.create({
       name: 'Super Admin',
       email: 'superadmin@sudhakarchits.com',
       phone: '9900000001',
-      passwordHash,
+      passwordHash: hashSuperAdmin,
       role: Role.SUPER_ADMIN,
       isActive: true,
     }),
@@ -112,7 +115,7 @@ async function seed() {
       name: 'Branch Operations Admin',
       email: 'admin@sudhakarchits.com',
       phone: '9900000002',
-      passwordHash,
+      passwordHash: hashAdmin,
       role: Role.ADMIN,
       isActive: true,
     }),
@@ -123,7 +126,7 @@ async function seed() {
       name: 'Ramesh Collector',
       email: 'collector@sudhakarchits.com',
       phone: '9900000003',
-      passwordHash,
+      passwordHash: hashCollector,
       role: Role.COLLECTION_STAFF,
       isActive: true,
     }),
@@ -134,7 +137,7 @@ async function seed() {
       name: 'Pooja Accountant',
       email: 'accountant@sudhakarchits.com',
       phone: '9900000004',
-      passwordHash,
+      passwordHash: hashAccountant,
       role: Role.ACCOUNTANT,
       isActive: true,
     }),
@@ -146,7 +149,7 @@ async function seed() {
       name: 'Branch Admin',
       email: 'admin@echits.com',
       phone: '9900000012',
-      passwordHash,
+      passwordHash: hashAdmin,
       role: Role.ADMIN,
       isActive: true,
     }),
@@ -154,7 +157,7 @@ async function seed() {
       name: 'Super Admin',
       email: 'superadmin@echits.com',
       phone: '9900000011',
-      passwordHash,
+      passwordHash: hashSuperAdmin,
       role: Role.SUPER_ADMIN,
       isActive: true,
     }),
@@ -162,7 +165,7 @@ async function seed() {
       name: 'Collector Staff',
       email: 'collector@echits.com',
       phone: '9900000013',
-      passwordHash,
+      passwordHash: hashCollector,
       role: Role.COLLECTION_STAFF,
       isActive: true,
     }),
@@ -170,7 +173,7 @@ async function seed() {
       name: 'Accountant',
       email: 'accountant@echits.com',
       phone: '9900000014',
-      passwordHash,
+      passwordHash: hashAccountant,
       role: Role.ACCOUNTANT,
       isActive: true,
     }),

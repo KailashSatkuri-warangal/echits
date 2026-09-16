@@ -44,21 +44,21 @@ export class SeedService implements OnApplicationBootstrap {
     const settingRepo = this.dataSource.getRepository(entities.BusinessSetting);
 
     const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash('Admin@123', salt);
 
-    // 1. Ensure all Staff & Admin Users exist with valid Admin@123 password
+    // 1. Ensure all Staff & Admin Users exist with 24-digit strong passwords
     const defaultUsers = [
-      { name: 'Super Admin', email: 'superadmin@sudhakarchits.com', phone: '9900000001', role: Role.SUPER_ADMIN },
-      { name: 'Branch Operations Admin', email: 'admin@sudhakarchits.com', phone: '9900000002', role: Role.ADMIN },
-      { name: 'Ramesh Collector', email: 'collector@sudhakarchits.com', phone: '9900000003', role: Role.COLLECTION_STAFF },
-      { name: 'Pooja Accountant', email: 'accountant@sudhakarchits.com', phone: '9900000004', role: Role.ACCOUNTANT },
-      { name: 'Super Admin', email: 'superadmin@echits.com', phone: '9900000011', role: Role.SUPER_ADMIN },
-      { name: 'Branch Admin', email: 'admin@echits.com', phone: '9900000012', role: Role.ADMIN },
-      { name: 'Collector Staff', email: 'collector@echits.com', phone: '9900000013', role: Role.COLLECTION_STAFF },
-      { name: 'Accountant', email: 'accountant@echits.com', phone: '9900000014', role: Role.ACCOUNTANT },
+      { name: 'Super Admin', email: 'superadmin@sudhakarchits.com', phone: '9900000001', role: Role.SUPER_ADMIN, password: 'SC#9kM2$vL8@zP4!wX7&jR59' },
+      { name: 'Branch Operations Admin', email: 'admin@sudhakarchits.com', phone: '9900000002', role: Role.ADMIN, password: 'SC#7yT3^uW9#pM5$eR2@qZ82' },
+      { name: 'Ramesh Collector', email: 'collector@sudhakarchits.com', phone: '9900000003', role: Role.COLLECTION_STAFF, password: 'SC#4zV8@wP2#kL6$jQ9!tN33' },
+      { name: 'Pooja Accountant', email: 'accountant@sudhakarchits.com', phone: '9900000004', role: Role.ACCOUNTANT, password: 'SC#8kM2@vX9!wZ4#eT7&yR54' },
+      { name: 'Super Admin', email: 'superadmin@echits.com', phone: '9900000011', role: Role.SUPER_ADMIN, password: 'SC#9kM2$vL8@zP4!wX7&jR59' },
+      { name: 'Branch Admin', email: 'admin@echits.com', phone: '9900000012', role: Role.ADMIN, password: 'SC#7yT3^uW9#pM5$eR2@qZ82' },
+      { name: 'Collector Staff', email: 'collector@echits.com', phone: '9900000013', role: Role.COLLECTION_STAFF, password: 'SC#4zV8@wP2#kL6$jQ9!tN33' },
+      { name: 'Accountant', email: 'accountant@echits.com', phone: '9900000014', role: Role.ACCOUNTANT, password: 'SC#8kM2@vX9!wZ4#eT7&yR54' },
     ];
 
     for (const u of defaultUsers) {
+      const passwordHash = await bcrypt.hash(u.password, salt);
       let existingByEmail = await userRepo.findOne({
         where: { email: u.email.toLowerCase() },
       });

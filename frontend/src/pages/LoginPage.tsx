@@ -9,7 +9,7 @@ export const LoginPage: React.FC = () => {
   const { login } = useAuth();
 
   const [email, setEmail] = useState('admin@sudhakarchits.com');
-  const [password, setPassword] = useState('Admin@123');
+  const [password, setPassword] = useState('SC#7yT3^uW9#pM5$eR2@qZ82');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -96,7 +96,7 @@ export const LoginPage: React.FC = () => {
           <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
             <button
               type="button"
-              onClick={() => handleQuickLogin('superadmin@sudhakarchits.com', 'Admin@123')}
+              onClick={() => handleQuickLogin('superadmin@sudhakarchits.com', 'SC#9kM2$vL8@zP4!wX7&jR59')}
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-left transition-colors"
             >
               <div className="font-bold text-slate-900">Super Admin</div>
@@ -104,7 +104,7 @@ export const LoginPage: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickLogin('admin@sudhakarchits.com', 'Admin@123')}
+              onClick={() => handleQuickLogin('admin@sudhakarchits.com', 'SC#7yT3^uW9#pM5$eR2@qZ82')}
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-left transition-colors"
             >
               <div className="font-bold text-slate-900">Branch Admin</div>
@@ -112,7 +112,7 @@ export const LoginPage: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickLogin('collector@sudhakarchits.com', 'Admin@123')}
+              onClick={() => handleQuickLogin('collector@sudhakarchits.com', 'SC#4zV8@wP2#kL6$jQ9!tN33')}
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-left transition-colors"
             >
               <div className="font-bold text-slate-900">Collection Staff</div>
@@ -120,7 +120,7 @@ export const LoginPage: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickLogin('accountant@sudhakarchits.com', 'Admin@123')}
+              onClick={() => handleQuickLogin('accountant@sudhakarchits.com', 'SC#8kM2@vX9!wZ4#eT7&yR54')}
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-left transition-colors"
             >
               <div className="font-bold text-slate-900">Accountant</div>
