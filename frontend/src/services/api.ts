@@ -19,7 +19,7 @@ export const api = axios.create({
 
 // Request interceptor: attach token
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('echits_token');
+  const token = localStorage.getItem('sudhakarchits_token') || localStorage.getItem('echits_token');
   if (token && config.headers) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -37,6 +37,8 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response?.status === 401) {
+      localStorage.removeItem('sudhakarchits_token');
+      localStorage.removeItem('sudhakarchits_user');
       localStorage.removeItem('echits_token');
       localStorage.removeItem('echits_user');
       if (window.location.pathname !== '/login') {

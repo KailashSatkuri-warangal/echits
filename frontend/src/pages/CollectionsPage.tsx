@@ -71,7 +71,7 @@ export const CollectionsPage: React.FC = () => {
     const cleanPhone = phone.replace(/[^0-9]/g, '');
     const intlPhone = cleanPhone.startsWith('91') ? cleanPhone : `91${cleanPhone}`;
     const text = encodeURIComponent(
-      `Hello ${memberName}, this is a collection reminder from eChits. You have an outstanding chit balance of ₹${amount.toLocaleString('en-IN')}. Please confirm payment time. Thank you!`,
+      `Hello ${memberName}, this is a collection reminder from Sudhakar Chits. You have an outstanding chit balance of ₹${amount.toLocaleString('en-IN')}. Please confirm payment time. Thank you!`,
     );
     window.open(`https://wa.me/${intlPhone}?text=${text}`, '_blank');
   };

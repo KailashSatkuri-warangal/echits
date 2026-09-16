@@ -8,7 +8,7 @@ export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const [email, setEmail] = useState('admin@echits.com');
+  const [email, setEmail] = useState('admin@sudhakarchits.com');
   const [password, setPassword] = useState('Admin@123');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);

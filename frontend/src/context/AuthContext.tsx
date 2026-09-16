@@ -19,20 +19,20 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(() => {
-    const savedUser = localStorage.getItem('echits_user');
+    const savedUser = localStorage.getItem('sudhakarchits_user') || localStorage.getItem('echits_user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('echits_token'));
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem('sudhakarchits_token') || localStorage.getItem('echits_token'));
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const initAuth = async () => {
-      const savedToken = localStorage.getItem('echits_token');
+      const savedToken = localStorage.getItem('sudhakarchits_token') || localStorage.getItem('echits_token');
       if (savedToken) {
         try {
           const profile = await authService.getProfile();
           setUser(profile);
-          localStorage.setItem('echits_user', JSON.stringify(profile));
+          localStorage.setItem('sudhakarchits_user', JSON.stringify(profile));
         } catch (err) {
           console.warn('Auth token expired or invalid:', err);
           logout();
@@ -48,13 +48,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const res = await authService.login(email, pass);
     setToken(res.accessToken);
     setUser(res.user);
-    localStorage.setItem('echits_token', res.accessToken);
-    localStorage.setItem('echits_user', JSON.stringify(res.user));
+    localStorage.setItem('sudhakarchits_token', res.accessToken);
+    localStorage.setItem('sudhakarchits_user', JSON.stringify(res.user));
   };
 
   const logout = () => {
     setToken(null);
     setUser(null);
+    localStorage.removeItem('sudhakarchits_token');
+    localStorage.removeItem('sudhakarchits_user');
     localStorage.removeItem('echits_token');
     localStorage.removeItem('echits_user');
   };

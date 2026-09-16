@@ -10,7 +10,7 @@ export const PWAInstallBanner: React.FC = () => {
       e.preventDefault();
       setDeferredPrompt(e);
       // Check if user dismissed recently
-      const dismissed = localStorage.getItem("echits_pwa_dismissed");
+      const dismissed = localStorage.getItem("sudhakarchits_pwa_dismissed") || localStorage.getItem("echits_pwa_dismissed");
       if (!dismissed) {
         setShowBanner(true);
       }
@@ -38,7 +38,7 @@ export const PWAInstallBanner: React.FC = () => {
 
   const handleDismiss = () => {
     setShowBanner(false);
-    localStorage.setItem("echits_pwa_dismissed", "true");
+    localStorage.setItem("sudhakarchits_pwa_dismissed", "true");
   };
 
   if (!showBanner) return null;

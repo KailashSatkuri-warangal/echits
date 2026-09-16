@@ -1,7 +1,7 @@
 {
-  "name": "echits-backend",
+  "name": "sudhakarchits-backend",
   "version": "1.0.0",
-  "description": "eChits - Production Chit Management & Collection Financial Engine",
+  "description": "Sudhakar Chits - Production Chit Management & Collection Financial Engine",
   "scripts": {
     "build": "nest build",
     "start": "nest start",
