@@ -35,8 +35,8 @@ async function bootstrap() {
 
   // Swagger OpenAPI Setup
   const config = new DocumentBuilder()
-    .setTitle('eChits Financial Operations API')
-    .setDescription('Authoritative API documentation for the eChits Chit Fund Management & Collection Platform')
+    .setTitle('Sudhakar Chits Financial Operations API')
+    .setDescription('Authoritative API documentation for the Sudhakar Chits Fund Management & Collection Platform')
     .setVersion('1.0.0')
     .addBearerAuth()
     .build();
@@ -46,7 +46,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 4000;
   await app.listen(port, '0.0.0.0');
-  console.log(`🚀 eChits Financial Backend running on port ${port} (/api)`);
+  console.log(`🚀 Sudhakar Chits Financial Backend running on port ${port} (/api)`);
   console.log(`📑 OpenAPI Swagger Documentation available at /api/docs`);
 }
 

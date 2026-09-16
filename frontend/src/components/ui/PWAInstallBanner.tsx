@@ -46,12 +46,12 @@ export const PWAInstallBanner: React.FC = () => {
   return (
     <div className="fixed top-3 left-3 right-3 z-50 max-w-md mx-auto animate-in slide-in-from-top-4 duration-300">
       <div className="bg-slate-900 text-white rounded-2xl shadow-2xl p-4 border border-emerald-500/30 flex items-center justify-between gap-3">
-        <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shrink-0 font-black text-xl shadow-md">
-          ₹
+        <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shrink-0 font-black text-sm tracking-tighter shadow-md">
+          SC
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-xs font-black text-white tracking-tight flex items-center gap-1.5">
-            Install eChits App
+            Install Sudhakar Chits
             <span className="text-[10px] bg-emerald-500/20 text-emerald-400 font-bold px-1.5 py-0.5 rounded-full">PWA</span>
           </div>
           <div className="text-[11px] text-slate-400 truncate">Fast offline access & receipt printing</div>

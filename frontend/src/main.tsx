@@ -15,10 +15,10 @@ if ('serviceWorker' in navigator && import.meta.env.PROD) {
     navigator.serviceWorker
       .register('/sw.js')
       .then((reg) => {
-        console.log('✅ eChits PWA Service Worker registered successfully:', reg.scope);
+        console.log('✅ Sudhakar Chits PWA Service Worker registered successfully:', reg.scope);
       })
       .catch((err) => {
-        console.warn('⚠️ eChits PWA Service Worker registration error:', err);
+        console.warn('⚠️ Sudhakar Chits PWA Service Worker registration error:', err);
       });
   });
 }

@@ -28,7 +28,7 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({ isOpen, onClose, rec
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `eChits Receipt ${receiptData.receiptNumber}`,
+          title: `Sudhakar Chits Receipt ${receiptData.receiptNumber}`,
           text: `Payment Receipt ${receiptData.receiptNumber} of ₹${receiptData.amount} for ${receiptData.member.name}`,
           url: `${window.location.origin}/api/documents/receipts/${receiptData.payment.id}/pdf`,
         });
@@ -65,7 +65,7 @@ export const ReceiptModal: React.FC<ReceiptModalProps> = ({ isOpen, onClose, rec
           {/* Organization & Date */}
           <div className="flex justify-between items-start border-b border-slate-200/80 pb-2.5">
             <div>
-              <div className="font-extrabold text-sm text-slate-900">eChits Financial Platform</div>
+              <div className="font-extrabold text-sm text-slate-900">Sudhakar Chits (India) Pvt Ltd</div>
               <div className="text-[11px] text-slate-500">Official Collection Receipt</div>
             </div>
             <div className="text-right font-mono text-[11px] text-slate-600">

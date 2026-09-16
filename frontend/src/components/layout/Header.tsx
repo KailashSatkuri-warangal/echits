@@ -24,17 +24,17 @@ export const Header: React.FC = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo & Platform Name */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-sm font-black text-lg">
-              ₹
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-sm font-black text-sm tracking-tighter">
+              SC
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-black text-slate-900 tracking-tight text-lg leading-tight">eChits</span>
+                <span className="font-black text-slate-900 tracking-tight text-lg leading-tight">Sudhakar Chits</span>
                 <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded">
-                  Pro
+                  Live
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium hidden sm:block">Chit Management & Collection</p>
+              <p className="text-[11px] text-slate-500 font-medium hidden sm:block">Chit Fund Operations & Collections</p>
             </div>
           </div>
 

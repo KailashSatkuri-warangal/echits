@@ -8,7 +8,7 @@ export class AppController {
   @ApiOperation({ summary: "Root service status and documentation link" })
   getRoot() {
     return {
-      service: "eChits Authoritative Financial Core API",
+      service: "Sudhakar Chits Authoritative Financial Core API",
       status: "ONLINE",
       version: "1.0.0",
       documentation: "/api/docs",

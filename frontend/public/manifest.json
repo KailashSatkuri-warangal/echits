@@ -1,8 +1,8 @@
 {
-  "id": "com.echits.app",
-  "name": "eChits - Chit Fund Management & Collection",
-  "short_name": "eChits",
-  "description": "Production Chit Fund Operations, Collection and Member Management Financial Platform",
+  "id": "com.sudhakarchits.app",
+  "name": "Sudhakar Chits - Chit Fund Management & Collection",
+  "short_name": "SudhakarChits",
+  "description": "Sudhakar Chits Operations, Collection and Member Management Financial Platform",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -48,14 +48,14 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "eChits Desktop Dashboard & Financial Analytics"
+      "label": "Sudhakar Chits Desktop Dashboard & Financial Analytics"
     },
     {
       "src": "/screenshots/mobile.png",
       "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "eChits Mobile 4-Tap Collection Drawer"
+      "label": "Sudhakar Chits Mobile 4-Tap Collection Drawer"
     }
   ],
   "shortcuts": [

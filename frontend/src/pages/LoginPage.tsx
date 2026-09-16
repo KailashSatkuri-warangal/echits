@@ -38,11 +38,11 @@ export const LoginPage: React.FC = () => {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-lg mx-auto font-black text-2xl">
-            ₹
+          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-lg mx-auto font-black text-2xl tracking-tighter">
+            SC
           </div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight">eChits Platform</h1>
-          <p className="text-xs text-slate-500 font-medium">Production Chit Fund Management & Collection</p>
+          <h1 className="text-2xl font-black text-slate-900 tracking-tight">Sudhakar Chits</h1>
+          <p className="text-xs text-slate-500 font-medium">Chit Fund Operations & Digital Collections Platform</p>
         </div>
 
         {error && (
@@ -62,7 +62,7 @@ export const LoginPage: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@echits.com or 9845012345"
+                placeholder="admin@sudhakarchits.com or 9845012345"
                 className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-slate-900"
               />
             </div>
@@ -84,19 +84,19 @@ export const LoginPage: React.FC = () => {
           </div>
 
           <Button type="submit" size="lg" className="w-full" isLoading={isLoading} rightIcon={<ArrowRight size={18} />}>
-            Sign In to eChits
+            Sign In to Sudhakar Chits
           </Button>
         </form>
 
         {/* Quick Role Fill for evaluation */}
         <div className="pt-4 border-t border-slate-100 space-y-3">
           <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider text-center">
-            Staff & Admin Logins
+            Staff & Admin Quick Fill
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
             <button
               type="button"
-              onClick={() => handleQuickLogin('superadmin@echits.com', 'Admin@123')}
+              onClick={() => handleQuickLogin('superadmin@sudhakarchits.com', 'Admin@123')}
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-left transition-colors"
             >
               <div className="font-bold text-slate-900">Super Admin</div>
@@ -104,7 +104,7 @@ export const LoginPage: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickLogin('admin@echits.com', 'Admin@123')}
+              onClick={() => handleQuickLogin('admin@sudhakarchits.com', 'Admin@123')}
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-left transition-colors"
             >
               <div className="font-bold text-slate-900">Branch Admin</div>
@@ -112,7 +112,7 @@ export const LoginPage: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickLogin('collector@echits.com', 'Admin@123')}
+              onClick={() => handleQuickLogin('collector@sudhakarchits.com', 'Admin@123')}
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-left transition-colors"
             >
               <div className="font-bold text-slate-900">Collection Staff</div>
@@ -120,7 +120,7 @@ export const LoginPage: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => handleQuickLogin('accountant@echits.com', 'Admin@123')}
+              onClick={() => handleQuickLogin('accountant@sudhakarchits.com', 'Admin@123')}
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-left transition-colors"
             >
               <div className="font-bold text-slate-900">Accountant</div>

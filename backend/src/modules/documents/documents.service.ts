@@ -39,8 +39,8 @@ export class DocumentsService {
       doc.on('error', reject);
 
       // --- HEADER ---
-      doc.fontSize(18).fillColor('#059669').text('eChits Financial Operations', { align: 'center' });
-      doc.fontSize(9).fillColor('#64748b').text('Authorized Chit Management & Collection Platform', { align: 'center' });
+      doc.fontSize(18).fillColor('#059669').text('SUDHAKAR CHITS (INDIA) PVT LTD', { align: 'center' });
+      doc.fontSize(9).fillColor('#64748b').text('Authorized Chit Fund Operations & Collections Platform', { align: 'center' });
       doc.moveDown(0.5);
       doc.strokeColor('#e2e8f0').lineWidth(1).moveTo(40, doc.y).lineTo(doc.page.width - 40, doc.y).stroke();
       doc.moveDown(0.8);

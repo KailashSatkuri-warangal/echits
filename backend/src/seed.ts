@@ -89,7 +89,7 @@ async function seed() {
   const superAdmin = await userRepo.save(
     userRepo.create({
       name: 'Super Admin',
-      email: 'superadmin@echits.com',
+      email: 'superadmin@sudhakarchits.com',
       phone: '9900000001',
       passwordHash,
       role: Role.SUPER_ADMIN,
@@ -100,7 +100,7 @@ async function seed() {
   const admin = await userRepo.save(
     userRepo.create({
       name: 'Branch Operations Admin',
-      email: 'admin@echits.com',
+      email: 'admin@sudhakarchits.com',
       phone: '9900000002',
       passwordHash,
       role: Role.ADMIN,
@@ -111,7 +111,7 @@ async function seed() {
   const collector = await userRepo.save(
     userRepo.create({
       name: 'Ramesh Collector',
-      email: 'collector@echits.com',
+      email: 'collector@sudhakarchits.com',
       phone: '9900000003',
       passwordHash,
       role: Role.COLLECTION_STAFF,
@@ -122,7 +122,7 @@ async function seed() {
   const accountant = await userRepo.save(
     userRepo.create({
       name: 'Pooja Accountant',
-      email: 'accountant@echits.com',
+      email: 'accountant@sudhakarchits.com',
       phone: '9900000004',
       passwordHash,
       role: Role.ACCOUNTANT,
@@ -130,13 +130,49 @@ async function seed() {
     }),
   );
 
+  // Backward compatibility logins for @echits.com
+  await userRepo.save([
+    userRepo.create({
+      name: 'Branch Admin',
+      email: 'admin@echits.com',
+      phone: '9900000012',
+      passwordHash,
+      role: Role.ADMIN,
+      isActive: true,
+    }),
+    userRepo.create({
+      name: 'Super Admin',
+      email: 'superadmin@echits.com',
+      phone: '9900000011',
+      passwordHash,
+      role: Role.SUPER_ADMIN,
+      isActive: true,
+    }),
+    userRepo.create({
+      name: 'Collector Staff',
+      email: 'collector@echits.com',
+      phone: '9900000013',
+      passwordHash,
+      role: Role.COLLECTION_STAFF,
+      isActive: true,
+    }),
+    userRepo.create({
+      name: 'Accountant',
+      email: 'accountant@echits.com',
+      phone: '9900000014',
+      passwordHash,
+      role: Role.ACCOUNTANT,
+      isActive: true,
+    }),
+  ]);
+
   console.log('👤 Users created.');
 
   // 2. Seed Settings
   await settingRepo.save([
     settingRepo.create({
       key: 'COMPANY_NAME',
-      value: 'eChits Financial Enterprises Pvt Ltd',
+      value: 'Sudhakar Chits (India) Pvt Ltd',
       description: 'Official organization name',
       group: 'SYSTEM',
     }),
