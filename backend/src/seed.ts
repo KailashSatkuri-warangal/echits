@@ -5,29 +5,38 @@ import { Role, ChitStatus, MembershipStatus, ChitMonthStatus, DueStatus, Payment
 import { CurrencyUtil } from './common/utils/currency.util';
 
 async function seed() {
-  const isPostgres = !!process.env.DATABASE_URL || !!process.env.DB_HOST;
+  const dbUrl = process.env.DATABASE_URL;
+  const dbHost = process.env.DB_HOST;
 
-  const dataSource = new DataSource(
-    isPostgres
-      ? {
-          type: 'postgres',
-          url: process.env.DATABASE_URL,
-          host: process.env.DB_HOST || 'localhost',
-          port: parseInt(process.env.DB_PORT || '5432', 10),
-          username: process.env.DB_USERNAME || 'postgres',
-          password: process.env.DB_PASSWORD || 'postgres',
-          database: process.env.DB_DATABASE || 'echits',
-          ssl: !!process.env.DATABASE_URL || process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
-          entities: Object.values(entities),
-          synchronize: true,
-        }
-      : {
-          type: 'better-sqlite3',
-          database: process.env.SQLITE_PATH || 'echits.db',
-          entities: Object.values(entities),
-          synchronize: true,
-        },
-  );
+  let dataSource: DataSource;
+  if (dbUrl) {
+    dataSource = new DataSource({
+      type: 'postgres',
+      url: dbUrl,
+      ssl: { rejectUnauthorized: false },
+      entities: Object.values(entities),
+      synchronize: true,
+    });
+  } else if (dbHost) {
+    dataSource = new DataSource({
+      type: 'postgres',
+      host: dbHost,
+      port: parseInt(process.env.DB_PORT || '5432', 10),
+      username: process.env.DB_USERNAME || 'postgres',
+      password: process.env.DB_PASSWORD || 'postgres',
+      database: process.env.DB_DATABASE || 'sudhakarchits',
+      ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
+      entities: Object.values(entities),
+      synchronize: true,
+    });
+  } else {
+    dataSource = new DataSource({
+      type: 'better-sqlite3',
+      database: process.env.SQLITE_PATH || 'echits.db',
+      entities: Object.values(entities),
+      synchronize: true,
+    });
+  }
 
   await dataSource.initialize();
   console.log('📦 Database connection initialized for seeding...');
